@@ -10,29 +10,61 @@ public class RemoveDuplicates {
 
 		// split the string to form an array based on the spaces
 		String[] array = text.split(" ");
-		// take a counter to increment if matches
-		int count=0;
-		for (int i = 0; i < array.length; i++) {//3
-			for (int j = i+1; j < array.length; j++) {//8
+
+		for (int i = 0; i < array.length; i++) {
+
+			for (int j = i+1; j < array.length; j++) {
+				//Check every word for the duplicates without being case sensitive				
 				if (array[i].equalsIgnoreCase(array[j]))
 				{
-					count = count +1;
+					// if there is a duplicate replace it with " ".
+					// Here it is not array[i], but array[j] as the duplicates alone have to be removed and not everything.					
+					array[j]=" ";
 				}
 			}
-			if (count>1)
-			{
-				String replace =text.replace(array[i], " ");
-				//String replace = text.replaceAll(array[i], " ");
-				System.out.println(replace);
-				break;
-			}	 
+			//For readability we have added space and displayed without "\n".			
+			System.out.print(" " +array[i]);	
 		}
+
 	}
 }
 
+// -------------------- with counter----------------------------------------------------------
+package week1.day2;
 
+import java.nio.file.spi.FileSystemProvider;
+import java.util.Iterator;
 
+public class RemoveDuplicates {
 
+	public static void main(String[] args) {
+		String text = "We learn java basics as part of java sessions in java week1";
+		// Initialise a counter to check the duplicates
+		int count =1;
+		// split the string to form an array based on the spaces
+		String[] array = text.split(" ");
+
+		for (int i = 0; i < array.length; i++) {
+
+			for (int j = i+1; j < array.length; j++) {
+				//Check every word for the duplicates without being case sensitive				
+				if (array[i].equalsIgnoreCase(array[j]))
+				{
+					// when duplicates are present increment the counter
+					count+=1;
+					// only when the counter is greater than 1, we will replace the duplicate
+					if (count >1)
+						// if there is a duplicate replace it with " ".
+						// Here it is not array[i], but array[j] as the duplicates alone have to be removed and not everything.					
+						array[j]=" ";
+				}
+			}
+			//For readability we have added space and displayed without "\n".	
+			System.out.print(" " +array[i]);	
+		}
+
+	}
+}
 
 
 
