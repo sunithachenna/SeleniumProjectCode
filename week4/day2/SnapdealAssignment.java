@@ -123,7 +123,7 @@ public static void main(String[] args) throws InterruptedException, IOException 
         FileUtils.copyFile(src, destination);
         
         //close the browser
-        // driver.close();
+        driver.close();
 
 	}
 
